@@ -54,14 +54,14 @@
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "int64",
             "formatString": "0",
             "lineageTag": "43b217a4-abcc-4013-ad3e-e632bba5e4de",
             "sourceColumn": "AsignaturasID",
-            "summarizeBy": "count"
+            "summarizeBy": "none"
           },
           {
             "name": "Nombre",
@@ -135,6 +135,14 @@
           }
         ],
         "lineageTag": "046132f7-caa3-451a-ba37-827dc1d0b079",
+        "measures": [
+          {
+            "name": "cant_per_area",
+            "expression": "COUNT(data_sample_cursos[Nombre])",
+            "formatString": "0",
+            "lineageTag": "4d102864-6d3c-4a2d-b20e-c6852a889cf1"
+          }
+        ],
         "partitions": [
           {
             "name": "data_sample_cursos",
