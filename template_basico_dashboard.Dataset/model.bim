@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"data_sample_cursos\"]"
+        "value": "[\"data_sample_cursos\",\"CSV_url\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -38,6 +38,24 @@
       "returnErrorValuesAsNull": true
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "CSV_url",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "expression": "\"https://raw.githubusercontent.com/aocana-data/sample-datasets/main/data_sample_cursos.csv\" meta [IsParameterQuery=true, Type=\"Any\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "e4318a54-0eda-421a-8b29-1787758185a5"
+      }
+    ],
     "sourceQueryCulture": "en-US",
     "tables": [
       {
@@ -46,6 +64,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -150,7 +172,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/aocana-data/sample-datasets/main/data_sample_cursos.csv\"),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    Source = Csv.Document(Web.Contents(CSV_url),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Use First Row as Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Change Type\" = Table.TransformColumnTypes(#\"Use First Row as Headers\",{{\"AsignaturasID\", Int64.Type}, {\"Nombre\", type text}, {\"Tipo\", type text}, {\"Jornada\", type text}, {\"Costo\", type number}, {\"Area\", Int64.Type}})",
                 "in",
