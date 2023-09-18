@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../template_basico_dashboard.Dataset"
+    },
+    "byConnection": null
+  }
+}
